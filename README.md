@@ -27,7 +27,7 @@ Caratteristiche principali:
 - Semplice da configurare e funziona senza modificare il firewall o la rete.
 
 <h4>Istruzioni per installare e configurare ngrok:</h4>
- 1. Visitare il sito: https://ngrok.com/ e registrarsi.
+1. Visitare il sito: https://ngrok.com/ e registrarsi.
  
 Dopo la registrazione su ngrok, viene fornito un Authtoken (un codice alfanumerico unico). Questo token serve per autenticare l'utente e abilitare l'accesso alle funzionalità di ngrok, come l'utilizzo di URL persistenti o altre opzioni avanzate.
 
