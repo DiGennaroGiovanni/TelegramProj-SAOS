@@ -27,6 +27,7 @@ Caratteristiche principali:
 - Semplice da configurare e funziona senza modificare il firewall o la rete.
 
 <h4>Istruzioni per installare e configurare ngrok:</h4>
+
 1. Visitare il sito: https://ngrok.com/ e registrarsi.
  
 Dopo la registrazione su ngrok, viene fornito un Authtoken (un codice alfanumerico unico). Questo token serve per autenticare l'utente e abilitare l'accesso alle funzionalità di ngrok, come l'utilizzo di URL persistenti o altre opzioni avanzate.
@@ -34,10 +35,11 @@ Dopo la registrazione su ngrok, viene fornito un Authtoken (un codice alfanumeri
 2. Scaricare l'eseguibile ngrok.exe ed aggiungerlo alle variabili d'ambiente in modo da poter eseguire i comandi successivi senza problemi:
   - Aggiungere il percorso di ngrok.exe manualmente alle variabili di ambiente Path,
   - in alternativa, aprire il prompt dei comandi windows e digitare
-    `setx /M PATH "%PATH%;<PATH_TO_NGROK>"`  ad esempio : `setx /M PATH "%PATH%;C:\tools\ngrok"`
+    `setx /M PATH "%PATH%;<PATH_TO_NGROK>"`  ad esempio :
+    `setx /M PATH "%PATH%;C:\tools\ngrok"`
 
 3. Dopo aver aggiunto ngrok alle variabili d'ambiente configurarlo con il proprio token ottenuto durante la fase di registrazione, eseguire quindi il seguente comando:
-ngrok config add-authtoken <YOUR_AUTHTOKEN>
+`ngrok config add-authtoken <YOUR_AUTHTOKEN>`
 
 4. Per avviare il servizio di esposizione sulla porta 5000 eseguire sul prompt:
 `ngrok http 5000`
