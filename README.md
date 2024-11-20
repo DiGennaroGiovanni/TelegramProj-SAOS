@@ -34,22 +34,21 @@ Dopo la registrazione su ngrok, viene fornito un Authtoken (un codice alfanumeri
 2. Scaricare l'eseguibile ngrok.exe ed aggiungerlo alle variabili d'ambiente in modo da poter eseguire i comandi successivi senza problemi:
   - Aggiungere il percorso di ngrok.exe manualmente alle variabili di ambiente Path,
   - in alternativa, aprire il prompt dei comandi windows e digitare
-  '''setx /M PATH "%PATH%;<PATH_TO_NGROK>" ''' ad esempio
-  ''' setx /M PATH "%PATH%;C:\tools\ngrok" '''
+    `setx /M PATH "%PATH%;<PATH_TO_NGROK>"`  ad esempio : `setx /M PATH "%PATH%;C:\tools\ngrok"`
 
 3. Dopo aver aggiunto ngrok alle variabili d'ambiente configurarlo con il proprio token ottenuto durante la fase di registrazione, eseguire quindi il seguente comando:
-''' ngrok config add-authtoken <YOUR_AUTHTOKEN> '''
+ngrok config add-authtoken <YOUR_AUTHTOKEN>
 
 4. Per avviare il servizio di esposizione sulla porta 5000 eseguire sul prompt:
-'''ngrok http 5000'''
+`ngrok http 5000`
 
 5. Una volta avviato il servizio si otterrà una schermata tipo:
 ![ngrok](https://github.com/user-attachments/assets/be03b4b1-5577-4835-8ffb-8ecc7770f3cb)
-Inserire quindi nel file config.py in WEBHOOK_URL il valore di "Forwarding" per ottenere una cosa come : WEBHOOK_URL = 'https://51f7-87-10-197-93.ngrok-free.app/webhook'
+Inserire quindi nel file config.py in WEBHOOK_URL il valore di "Forwarding" per ottenere una cosa come : `WEBHOOK_URL = 'https://51f7-87-10-197-93.ngrok-free.app/webhook'`
 <b>ATTENZIONE:</b> Ogni volta che ngrok viene stoppato, bisogna rieseguire il comando al <b>punto 4</b> e modificare il file <b>config.py</b>
 
 Ecco cosa fare con il codice e l'eseguibile .exe:
-  ngrok http 5000
+  `ngrok http 5000`
   Configurazione del webhook su Telegram con un esempio:
   - Monitoraggio delle richieste
 
