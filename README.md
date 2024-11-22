@@ -103,11 +103,13 @@ Le raccolte e i documenti vengono creati implicitamente in Firestore, è suffici
 
 In Firestore, l'unità di archiviazione è il documento. Un documento è un un record leggero contenente campi mappati a valori. Ogni documento è identificati da un nome.
 Un documento che rappresenta l'utente alovelace potrebbe avere il seguente aspetto:
+
 ![image](https://github.com/user-attachments/assets/4f30ac6b-b528-4856-adbe-8856f320b11c)
 
 <b>RACCOLTE</b>
 
 I documenti si trovano nelle raccolte, che sono semplicemente contenitori per i documenti. Per Ad esempio, potresti avere una raccolta users che contiene i vari utenti, rappresentati da un documento:
+
 ![image](https://github.com/user-attachments/assets/743322cc-a3ee-409a-94f7-de7f0a3d12d0)
 
 <h3>CONFIGURAZIONE DATABASE:</h3>
