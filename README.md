@@ -71,9 +71,10 @@ Dopo la registrazione su ngrok, viene fornito un Authtoken (un codice alfanumeri
 
 5. Una volta avviato il servizio si otterrà una schermata tipo:
 ![ngrok](https://github.com/user-attachments/assets/be03b4b1-5577-4835-8ffb-8ecc7770f3cb)
-Inserire nel file `config.py` in `WEBHOOK_URL` il valore di `"Forwarding"` per ottenere una cosa come : `WEBHOOK_URL = 'https://51f7-87-10-197-93.ngrok-free.app/webhook'`
+Inserire nel file `config.py` in `WEBHOOK_URL` il valore di `"Forwarding"` per ottenere una cosa come :
+`WEBHOOK_URL = 'https://51f7-87-10-197-93.ngrok-free.app/webhook'`
 
-6. Eseguire il comando `/setdomain` sulla chat di telegram con @BotFather inserendo il valore di Forwaring ottenuto (es. https://51f7-87-10-197-93.ngrok-free.app)
+7. Eseguire il comando `/setdomain` sulla chat di telegram con @BotFather inserendo il valore di Forwaring ottenuto (es. https://51f7-87-10-197-93.ngrok-free.app)
    
 <b>ATTENZIONE:</b> Ogni volta che ngrok viene stoppato, bisogna rieseguire il comando dell <b>punto 4</b> e modificare sia il file <b>config.py</b> che il dominio del bot al <b>punto 6</b>
 
