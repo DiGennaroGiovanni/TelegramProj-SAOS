@@ -151,9 +151,51 @@ Vantaggi nell'utilizzo di Flask
 
 # 6. Funzionalità sviluppate e controlli di sicurezza
 
-<h3>REGISTRAZIONE</h3>
+Per testare le funzionalità dell'applicazione, bisogna visitare il link ottenuto nella <b>SEZIONE 3, PUNTO 5 (WEBHOOK_URL)</b>
 
-<h3>LOGIN</h3>
+<h3>REGISTRAZIONE e LOGIN</h3>
+
+--------- USO DI OAUTH-------------------
+
+Queste due funzionalità sono implementate attraverso il `Telegram Login Widget`. Quando si utilizza il login Telegram per la prima volta, il widget chiede il numero di telefono all'utente e invia un messaggio di conferma via Telegram per autorizzare il browser.
+Una volta fatto questo, viene visualizzato un meccanismo di <b>two-click login</b> sul sito.
+
+Quando si esegue l'accesso, verrà inviato il nome di Telegram, nome utente e la foto profilo al sito web. Il numero di telefono rimane invece nascosto. Il sito web può anche richiedere l'autorizzazione per inviare messaggi dal loro bot.
+
+Dopo ogni login, Telegram invierà un messaggio di riepilogo delle autorizzazioni concesse e dei dati che il sito web possiede. È possibile revocare l'autorizzazione toccando il pulsante appropriato sotto la sintesi di accesso.
+
+![Richiesta1_telegram](https://github.com/user-attachments/assets/eaffb063-cd2e-4117-9d25-c9b72a678144)
+
+![Richiesta2_telegram](https://github.com/user-attachments/assets/2df6cb88-b883-4298-9ba9-30583718ade2)
+
+![Richiesta3_telegram](https://github.com/user-attachments/assets/04bbe999-4b56-4da3-b65c-5c931e2c3a45)
+
+Dopo aver concesso le autorizzazioni, il widget restituisce i dati in due modi.
+Ai fini di questo progetto i dati vengono recuperati attraverso un JSON contenente i campi <b>id, first_name, last_name, username, photo_url, auth_date e hash</b>.
+
+Visitando `http://localhost:4040/inspect/http` si potrà vedere la richiesta /POST inviata al server come la seguente, con lo stato `200 OK`:
+
+![json_login](https://github.com/user-attachments/assets/3ae260a8-35ba-4698-a54b-19189f5665b0)
+
+<h3>ASPETTI DI SICUREZZA: Uso di OAuth da parte di Telegram</h3>
+
+OAuth (Open Authorization) è uno standard aperto per l'autorizzazione sicura che consente a un'applicazione di accedere a risorse protette su un altro servizio senza dover condividere le credenziali (come nome utente e password). In altre parole, OAuth permette a un'app di agire per conto dell'utente in modo sicuro e controllato.
+
+OAuth si basa su un modello che coinvolge tre parti principali:
+
+<b>Utente:</b> La persona che concede l'autorizzazione per accedere a una risorsa (in questo caso l'utente che visita la webApp)
+<b>Applicazione client:</b> Il servizio o l'app che richiede l'accesso alle risorse dell'utente (in questo caso la webApp).
+<b>Server di risorse:</b> Il servizio che ospita le risorse protette e verifica se il client ha l'autorizzazione per accedervi (in questo caso Telegram).
+
+<h3>ASPETTI DI SICUREZZA: Verifica della firma HMAC</h3>
+
+Telegram fornisce una hash che è una firma crittografica generata utilizzando una chiave segreta basata sul token del bot. Il server ricostruisce una stringa di controllo (data_check_string) contenente i dati ricevuti, ordinati in ordine alfabetico (come specificato nella documentazione ufficiale di Telegram). Utilizza l'algoritmo HMAC-SHA256 e il token del bot per calcolare la propria firma (hmac_signature).
+Se la firma calcolata corrisponde a quella fornita (hash_received), i dati sono considerati autentici e vengono salvati sul database (se l'utente non esiste) e passati nella sessione di Flask.
+
+<b>Vantaggi di questo approccio</b>
+- <b>Sicurezza:</b> L'uso della firma HMAC garantisce che i dati non vengano essere manomessi.
+- <b>Semplicità:</b> Gli utenti possono autenticarsi con un clic, senza necessità di password o registrazione manuale.
+- <b>Integrazione con database:</b> I dati degli utenti vengono salvati in Firestore, facilitando la gestione di utenti registrati.
 
 <h3>MODIFICA UTENTE</h3>
 
