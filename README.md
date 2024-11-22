@@ -199,11 +199,14 @@ Se la firma calcolata corrisponde a quella fornita (hash_received), i dati sono 
 <h3>MODIFICA UTENTE</h3>
  
 Dopo aver effettuato il login, i dati dell'utente vengono salvati nella sessione di Flask e resi disponibili nella pagina dashboard tramite la variabile user_data.
+
 Il frontend utilizza JavaScript per popolare la pagina HTML con i dati utente (nome, username Telegram, chat ID, indirizzo di fatturazione, ecc.).
+
 Qui è stata implementata una funzionalità esemplificativa di modifica dei dati dell'utente mediante il pulsante `Modifica Profilo`.
+
 Quando l'utente clicca su tale profilo, viene inviata una richiesta `POST /modify_account` (/modify_account è la rotta) con lo stato `200 OK` in caso di successo.
 
-La rotta `/webhook` nel backend Flask gestisce le richieste inviate al bot Telegram, quindi controllo il tipo di payload ricevuto:
+La rotta `/webhook` nel backend Flask gestisce le richieste inviate al bot Telegram, quindi controlla il tipo di payload ricevuto:
 
 Se il payload contiene i campi username, action, e chat_id, questi vengono processati: l'azione <b>"modify"</b> viene rilevata.
 Il bot verifica se sono configurati comandi disponibili per l’utente (Comandi impostati nella <b>SEZIONE 2 in "CONFIGURAZIONE COMANDO UTILE AL PROGETTO", punto 2</b>).
