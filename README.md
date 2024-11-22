@@ -93,8 +93,29 @@ Una volta impostato un webhook con l'API di Telegram, non è più necessario ese
 Per monitorare le richieste inviate al server è possibile accedere al link : `http://localhost:4040/inspect/http`
 
 # 5. Configurazione Firebase  - Firestore Database
-  
-# 6. Funzionalità sviluppate e controlli
 
+# 6. Flask
 
+Flask è un framework web leggero, più precisamente un microframework, open-source per il linguaggio di programmazione Python. È progettato per facilitare la creazione di applicazioni web, offrendo gli strumenti di base necessari per gestire richieste HTTP, routing, gestione delle sessioni e rendering di template.
+
+Flask è particolarmente utile per:
+
+- <b>Sviluppare API web:</b> grazie alla sua semplicità e flessibilità è molto usato per costruire API RESTful.
+- <b>Creare siti web dinamici:</b> Consente di generare pagine web dinamiche, interagendo con il database, gestendo la logica di business e rendendo il contenuto personalizzato per gli utenti.
+
+Vantaggi nell'utilizzo di Flask
+
+- <b>Flessibilità:</b> Essendo un microframework, Flask non impone una struttura rigida e consente agli sviluppatori di scegliere le librerie o gli strumenti che meglio si adattano al progetto. È possibile aggiungere facilmente estensioni per funzionalità come la gestione delle sessioni, la convalida dei moduli e l'autenticazione.
+
+- <b>Scalabilità:</b> Sebbene sia un framework leggero, Flask è abbastanza scalabile per supportare applicazioni più complesse. Può essere utilizzato per progetti di piccole dimensioni così come per applicazioni più grandi, con una gestione del codice che resta relativamente semplice.
+
+# 6. Funzionalità sviluppate e controlli di sicurezza
+
+<h3>REGISTRAZIONE</h3>
+
+<h3>LOGIN</h3>
+
+<h3>MODIFICA UTENTE</h3>
+
+<h3>LOGOUT</h3>
 
