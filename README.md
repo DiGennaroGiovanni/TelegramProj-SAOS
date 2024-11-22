@@ -171,7 +171,7 @@ Dopo ogni login, Telegram invierà un messaggio di riepilogo delle autorizzazion
 Dopo aver concesso le autorizzazioni, il widget restituisce i dati in due modi.
 Ai fini di questo progetto i dati vengono recuperati attraverso un JSON contenente i campi <b>id, first_name, last_name, username, photo_url, auth_date e hash</b>.
 
-Visitando `http://localhost:4040/inspect/http` si potrà vedere la richiesta /POST inviata al server come la seguente, con lo stato `200 OK`:
+Visitando `http://localhost:4040/inspect/http` si potrà vedere la richiesta `POST /auth` (/auth è l'endopoint del webHook) inviata al server come la seguente, con lo stato `200 OK`:
 
 ![json_login](https://github.com/user-attachments/assets/3ae260a8-35ba-4698-a54b-19189f5665b0)
 
