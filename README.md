@@ -155,8 +155,6 @@ Per testare le funzionalità dell'applicazione, bisogna visitare il link ottenut
 
 <h3>REGISTRAZIONE e LOGIN</h3>
 
---------- USO DI OAUTH-------------------
-
 Queste due funzionalità sono implementate attraverso il `Telegram Login Widget`. Quando si utilizza il login Telegram per la prima volta, il widget chiede il numero di telefono all'utente e invia un messaggio di conferma via Telegram per autorizzare il browser.
 Una volta fatto questo, viene visualizzato un meccanismo di <b>two-click login</b> sul sito.
 
