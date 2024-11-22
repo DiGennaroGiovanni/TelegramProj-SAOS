@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/625ec090-b547-46be-847b-e0ac4e909c64)![image](https://github.com/user-attachments/assets/2a1b2a9f-5805-4d2f-b205-0fe620f6ad7b)# Registrazione e Gestione Profilo via Telegram 
+# Registrazione e Gestione Profilo via Telegram 
 Progetto per l'esame di Sicurezza delle Architetture Orientate ai Servizi.
 
 Studente: Di Gennaro Giovanni
