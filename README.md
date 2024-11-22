@@ -15,7 +15,9 @@ Il progetto verte alla realizzazione di un servizio di registrazione e gestione 
 - WebHook
 
 # 1. Architettura del servizio
-    INSERIRE IMMAGINE
+
+L'architettura <b>REST</b> è uno stile architetturale per progettare servizi web. 
+Si basa su principi e vincoli che garantiscono semplicità, scalabilità e interoperabilità tra sistemi.
     
 # 2. Creazione chatBot telegram
 I chatbot sono piccole applicazioni che vengono eseguite interamente all'interno dell'app Telegram. Gli utenti interagiscono con i bot attraverso interfacce flessibili che possono supportare qualsiasi tipo di compito o servizio.
@@ -239,6 +241,9 @@ Per evitare che un utente riesca ad accedere all'endpoint della dashboard senza 
 <h3>LOGOUT</h3>
 
 La funzione di logout segue un flusso semplice e lineare che si articola in due parti principali: la parte frontend (JavaScript) e la parte backend (Python).
+
 Quando un utente clicca su `Logout`, viene invocato l'endpoint `/logout` con il metodo `POST`, anche in questo caso, si otterrà un valore di stato `200 OK`.
+
 Specifica `credentials: 'same-origin'` per assicurarsi che i cookie di sessione vengano inviati con la richiesta, garantendo che l'utente autenticato possa essere identificato dal server.
-Vengono rimossi quindi tutti i dati contenuti in `user_data` dalla sessione.
+
+Vengono rimossi quindi tutti i dati aggiunti precedentemente e contenuti in `user_data` dalla sessione.
