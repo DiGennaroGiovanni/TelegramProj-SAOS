@@ -2,7 +2,6 @@
 Progetto per l'esame di Sicurezza delle Architetture Orientate ai Servizi.
 Studente: Di Gennaro Giovanni
 
-
 Il progetto verte alla realizzazione di un servizio di registrazione e gestione account (eliminazione e modifica password) basato su Telegram. La sicurezza di tale servizio è garantita sia dall'uso del protocollo HTTPS sul quale i dati viaggiano cifrati che sulla sicurezza offerta da Telegram.
 
 # Principali tecnologie utilizzate:
@@ -37,7 +36,7 @@ Al termine della creazione, verrà fornito un <b>TOKEN</b> univoco, come ad esem
 3. Aggiungere il TOKEN fornito nel file `config.py` nella voce `TELEGRAM_TOKEN`
 4. Nel file `templates/index1.html` modificare la riga `data-telegram-login="NOME_BOT" ` inserendo il nome del proprio Bot.
 
-<h4>CONFIGURAZIONE COMANDO UTILE AL PROGETTO:</h4>
+<h3>CONFIGURAZIONE COMANDO UTILE AL PROGETTO:</h3>
 Il servizio realizzato in questo progetto utilizza il chatBot per modificare alcune informazioni dell'utente. A tal proposito è necessario creare un comando personalizzato.
 
 1. Inviare il comando `/setcommands` all'interno della chat con @BotFather
@@ -77,24 +76,23 @@ Inserire nel file `config.py` in `WEBHOOK_URL` il valore di `"Forwarding"` per o
    
 <b>ATTENZIONE:</b> Ogni volta che ngrok viene stoppato, bisogna rieseguire il comando dell <b>punto 4</b> e modificare sia il file <b>config.py</b> che il dominio del bot al <b>punto 6</b>
 
+# 4. Webhook
 
-# 4. Sicurezza di Telegram
-- Uso di chat_id
+Un webhook è un metodo per ricevere notifiche o aggiornamenti in tempo reale da un servizio. Funziona inviando automaticamente una richiesta HTTP (solitamente POST) a un endpoint specifico quando si verifica un determinato evento.
+
+<b>Come funziona un webhook:</b>
+- Registrazione dell'endpoint: Il server del servizio (in questo caso, Telegram) deve sapere dove inviare le notifiche. Per farlo, viene eseguita la funzione `def async set_bot_webhook()` nel `main.py`
+- Notifica dell'evento: Quando si verifica un evento (ad esempio, un utente invia un messaggio al bot), Telegram invia una richiesta POST all'URL registrato. Questa richiesta contiene i dettagli dell'evento in formato JSON.
+- Elaborazione della richiesta: Il server riceve la richiesta e la gestisce in base alla logica implementata come ad esempio inviando una risposta tramite l'API di Telegram.
+- Come interagisce un webhook con Telegram:
+Telegram utilizza il webhook per inviare gli aggiornamenti relativi al bot, come messaggi, callback delle tastiere inline, comandi e altro.
+
+Una volta impostato un webhook con l'API di Telegram, non è più necessario eseguire il polling (ovvero interrogare periodicamente il server di Telegram per nuovi messaggi). Questo rende il sistema più efficiente e reattivo.
+
+Per monitorare le richieste inviate al server è possibile accedere al link : `http://localhost:4040/inspect/http`
+
   
 # 5. Funzionalità sviluppate
-5.1 Registrazione Utente
-Descrizione di come l'utente si registra tramite Telegram.
-5.2 Modifica Password
-Flusso per aggiornare la password tramite la web app.
-5.3 Eliminazione Profilo
-Dettagli del processo per la rimozione dell'utente.
-Dettagli Tecnici
+???
 
-# 6. Endpoint API
-6.1 Elenco di tutti gli endpoint (es., /register, /update-password, /delete-profile) con spiegazioni dei parametri e delle risposte.
-6.2 Struttura del webhook: Come il server Flask riceve richieste da Telegram.
-6.3 Configurazione di Flask per gestire HTTPS con ngrok.
 
-# 7. Testing
-7.1 Come testare localmente utilizzando ngrok.
-7.2 Verificare la connessione tra Telegram, il webhook e la web app.
