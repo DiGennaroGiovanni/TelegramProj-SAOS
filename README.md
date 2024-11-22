@@ -35,6 +35,7 @@ Alcune funzionalità dei bot:
 Al termine della creazione, verrà fornito un <b>TOKEN</b> univoco, come ad esempio `123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11`. Sarà molto importante tenere questo TOKEN al sicuro e non condividerlo in quanto permette di gestire il Bot mediante le richieste API che potranno essere eseguite con `https://api.telegram.org/bot<token>/METHOD_NAME` o mediante comandi in chat (sempre usando il @BotFather)
 
 3. Aggiungere il TOKEN fornito nel file `config.py` nella voce `TELEGRAM_TOKEN`
+4. Nel file `templates/index1.html` modificare la riga `data-telegram-login="NOME_BOT" ` inserendo il nome del proprio Bot.
 
 <h4>CONFIGURAZIONE COMANDO UTILE AL PROGETTO:</h4>
 Il servizio realizzato in questo progetto utilizza il chatBot per modificare alcune informazioni dell'utente. A tal proposito è necessario creare un comando personalizzato.
@@ -62,7 +63,7 @@ Dopo la registrazione su ngrok, viene fornito un Authtoken (un codice alfanumeri
     `setx /M PATH "%PATH%;<PATH_TO_NGROK>"`  ad esempio :
     `setx /M PATH "%PATH%;C:\tools\ngrok"`
 
-3. Dopo aver aggiunto ngrok alle variabili d'ambiente configurarlo con il proprio token ottenuto durante la fase di registrazione, eseguire quindi il seguente comando:
+3. Dopo aver aggiunto ngrok alle variabili d'ambiente, configurarlo con il token ottenuto durante la fase di registrazione, eseguire quindi il seguente comando:
 `ngrok config add-authtoken <YOUR_AUTHTOKEN>`
 
 4. Per avviare il servizio di esposizione sulla porta 5000 eseguire sul prompt:
