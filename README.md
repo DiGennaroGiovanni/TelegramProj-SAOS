@@ -115,12 +115,14 @@ I documenti si trovano nelle raccolte, che sono semplicemente contenitori per i 
 <h3>CONFIGURAZIONE DATABASE:</h3>
 
 1. Dopo aver fatto l'accesso tramite Google al sito `https://console.firebase.google.com/u/0/`, creare un nuovo progetto seguendo le istruzioni.
+2. 
    <b>ATTENZIONE:</b> Ai fini del progetto, si raccomanda di non impostare <b>nessuna regola</b> per evitare errori di permessi durante la scrittura sul database
-2. Accedere al progetto appena creato e creare una nuova raccolta `'users'`
+3. Accedere al progetto appena creato e creare una nuova raccolta `'users'`
 
 Per salvare le credenziali di accesso da inserire all'interno del file `config.py` seguire i seguenti passaggi: 
 
 1. Accedere alla sezione `Impostazioni progetto`:
+   
 ![ImpostazioniProgetto](https://github.com/user-attachments/assets/40362d5c-37f3-4ed5-9048-b24c3503ea9e)
 
 2. Andare nella sezione `Account di servizio` e quindi `SDK Firebase Admin`
