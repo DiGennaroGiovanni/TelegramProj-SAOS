@@ -1,5 +1,6 @@
 # Registrazione e Gestione Profilo via Telegram 
 Progetto per l'esame di Sicurezza delle Architetture Orientate ai Servizi.
+
 Studente: Di Gennaro Giovanni
 
 Il progetto verte alla realizzazione di un servizio di registrazione e gestione account (eliminazione e modifica password) basato su Telegram. La sicurezza di tale servizio è garantita sia dall'uso del protocollo HTTPS sul quale i dati viaggiano cifrati che sulla sicurezza offerta da Telegram.
