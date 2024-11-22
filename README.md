@@ -92,8 +92,9 @@ Una volta impostato un webhook con l'API di Telegram, non è più necessario ese
 
 Per monitorare le richieste inviate al server è possibile accedere al link : `http://localhost:4040/inspect/http`
 
+# 5. Configurazione Firebase  - Firestore Database
   
-# 5. Funzionalità sviluppate
-???
+# 6. Funzionalità sviluppate e controlli
+
 
 
