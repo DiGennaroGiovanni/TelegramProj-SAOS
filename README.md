@@ -1,4 +1,4 @@
-# Registrazione e Gestione Profilo via Telegram 
+![image](https://github.com/user-attachments/assets/625ec090-b547-46be-847b-e0ac4e909c64)![image](https://github.com/user-attachments/assets/2a1b2a9f-5805-4d2f-b205-0fe620f6ad7b)# Registrazione e Gestione Profilo via Telegram 
 Progetto per l'esame di Sicurezza delle Architetture Orientate ai Servizi.
 
 Studente: Di Gennaro Giovanni
@@ -175,27 +175,66 @@ Visitando `http://localhost:4040/inspect/http` si potrà vedere la richiesta `PO
 
 ![json_login](https://github.com/user-attachments/assets/3ae260a8-35ba-4698-a54b-19189f5665b0)
 
-<h3>ASPETTI DI SICUREZZA: Uso di OAuth da parte di Telegram</h3>
+<b>ASPETTI DI SICUREZZA: Uso di OAuth da parte di Telegram</b>
 
 OAuth (Open Authorization) è uno standard aperto per l'autorizzazione sicura che consente a un'applicazione di accedere a risorse protette su un altro servizio senza dover condividere le credenziali (come nome utente e password). In altre parole, OAuth permette a un'app di agire per conto dell'utente in modo sicuro e controllato.
 
 OAuth si basa su un modello che coinvolge tre parti principali:
 
-<b>Utente:</b> La persona che concede l'autorizzazione per accedere a una risorsa (in questo caso l'utente che visita la webApp)
-<b>Applicazione client:</b> Il servizio o l'app che richiede l'accesso alle risorse dell'utente (in questo caso la webApp).
-<b>Server di risorse:</b> Il servizio che ospita le risorse protette e verifica se il client ha l'autorizzazione per accedervi (in questo caso Telegram).
+- <b>Utente:</b> La persona che concede l'autorizzazione per accedere a una risorsa (in questo caso l'utente che visita la webApp)
+- <b>Applicazione client:</b> Il servizio o l'app che richiede l'accesso alle risorse dell'utente (in questo caso la webApp).
+- <b>Server di risorse:</b> Il servizio che ospita le risorse protette e verifica se il client ha l'autorizzazione per accedervi (in questo caso Telegram).
 
-<h3>ASPETTI DI SICUREZZA: Verifica della firma HMAC</h3>
+<b>ASPETTI DI SICUREZZA: Verifica della firma HMAC</b>
 
 Telegram fornisce una hash che è una firma crittografica generata utilizzando una chiave segreta basata sul token del bot. Il server ricostruisce una stringa di controllo (data_check_string) contenente i dati ricevuti, ordinati in ordine alfabetico (come specificato nella documentazione ufficiale di Telegram). Utilizza l'algoritmo HMAC-SHA256 e il token del bot per calcolare la propria firma (hmac_signature).
 Se la firma calcolata corrisponde a quella fornita (hash_received), i dati sono considerati autentici e vengono salvati sul database (se l'utente non esiste) e passati nella sessione di Flask.
 
 <b>Vantaggi di questo approccio</b>
-- <b>Sicurezza:</b> L'uso della firma HMAC garantisce che i dati non vengano essere manomessi.
+- <b>Sicurezza:</b> L'uso della firma HMAC garantisce che i dati non vengano manomessi.
 - <b>Semplicità:</b> Gli utenti possono autenticarsi con un clic, senza necessità di password o registrazione manuale.
 - <b>Integrazione con database:</b> I dati degli utenti vengono salvati in Firestore, facilitando la gestione di utenti registrati.
 
 <h3>MODIFICA UTENTE</h3>
+ 
+Dopo aver effettuato il login, i dati dell'utente vengono salvati nella sessione di Flask e resi disponibili nella pagina dashboard tramite la variabile user_data.
+Il frontend utilizza JavaScript per popolare la pagina HTML con i dati utente (nome, username Telegram, chat ID, indirizzo di fatturazione, ecc.).
+Qui è stata implementata una funzionalità esemplificativa di modifica dei dati dell'utente mediante il pulsante `Modifica Profilo`.
+Quando l'utente clicca su tale profilo, viene inviata una richiesta `POST /modify_account` (/modify_account è la rotta) con lo stato `200 OK` in caso di successo.
+
+La rotta `/webhook` nel backend Flask gestisce le richieste inviate al bot Telegram, quindi controllo il tipo di payload ricevuto:
+
+Se il payload contiene i campi username, action, e chat_id, questi vengono processati: l'azione <b>"modify"</b> viene rilevata.
+Il bot verifica se sono configurati comandi disponibili per l’utente (Comandi impostati nella <b>SEZIONE 2 in "CONFIGURAZIONE COMANDO UTILE AL PROGETTO", punto 2</b>).
+
+L'utente riceve quindi un messaggio dal Bot di Telegram (configurato nella SEZIONE 2):
+
+![bot_commands](https://github.com/user-attachments/assets/f6298973-dd07-4fe5-95fc-753d536e71cc)
+
+Per questo progetto è possibile eseguire solo il comando `/indirizzofatturazione`, inviando tale comando al Bot, verrà avviato il processo di modifica come segue:
+
+![bot_commands1](https://github.com/user-attachments/assets/b8a18319-4cad-44a9-a807-be4ec2a38830)
+
+Lo scambio dei messaggi e l'acquisizione del nuovo indirizzo avviene mediante il controllo dei `callback` e dei `testi` presenti nelle richieste inviate ed intercettate dal webhook:
+
+Parte del <b>Callback</b> relativo alla scelta dell'utente:
+
+![callback_bot](https://github.com/user-attachments/assets/49f3427d-e681-47e7-9db1-622db4967b71)
+
+<b>POST contenente il messaggio dell'utente</b>
+
+![text_bot](https://github.com/user-attachments/assets/d895d533-7fc7-4b4f-b00f-51b180cbcc4e)
+
+Se tutto il processo va a buon fine, il nuovo indirizzo viene salvato sul database ed è possibile visualizzarlo nella dashboard aggiornando la pagina. 
+
+<h3>ASPETTI DI SICUREZZA: Impossibilità di accedere alla dashboard senza login</h3>
+
+Per evitare che un utente riesca ad accedere all'endpoint della dashboard senza aver effettivamente eseguito la registrazione/login, vengono controllati i dati di sessione lato server. Nel caso in cui questi siano vuoti ed un utente visita direttamente `WEBHOOK_URL/dashboard`, verrà reindirizzato in `WEBHOOK_URL/`
+
 
 <h3>LOGOUT</h3>
 
+La funzione di logout segue un flusso semplice e lineare che si articola in due parti principali: la parte frontend (JavaScript) e la parte backend (Python).
+Quando un utente clicca su `Logout`, viene invocato l'endpoint `/logout` con il metodo `POST`, anche in questo caso, si otterrà un valore di stato `200 OK`.
+Specifica `credentials: 'same-origin'` per assicurarsi che i cookie di sessione vengano inviati con la richiesta, garantendo che l'utente autenticato possa essere identificato dal server.
+Vengono rimossi quindi tutti i dati contenuti in `user_data` dalla sessione.
