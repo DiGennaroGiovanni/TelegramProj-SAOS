@@ -92,7 +92,43 @@ Una volta impostato un webhook con l'API di Telegram, non è più necessario ese
 
 Per monitorare le richieste inviate al server è possibile accedere al link : `http://localhost:4040/inspect/http`
 
-# 5. Configurazione Firebase  - Firestore Database
+# 5. Configurazione Firebase - Firestore Database
+
+Firestore è un database NoSQL orientato ai documenti. A differenza di un database SQL, non ci sono tabelle o righe. I dati vengono archiviati in documenti, che sono organizzati in raccolte.
+Ogni documento contiene un insieme di coppie chiave-valore. Firestore è ottimizzato per l'archiviazione di grandi raccolte di piccoli documenti.
+Tutti i documenti devono essere archiviati in raccolte.
+Le raccolte e i documenti vengono creati implicitamente in Firestore, è sufficiente assegnare i dati a un documento all'interno di una raccolta. Se la raccolta o il documento non esistono, Firestore li crea.
+
+<b>DOCUMENTI</b>
+
+In Firestore, l'unità di archiviazione è il documento. Un documento è un un record leggero contenente campi mappati a valori. Ogni documento è identificati da un nome.
+Un documento che rappresenta l'utente alovelace potrebbe avere il seguente aspetto:
+![image](https://github.com/user-attachments/assets/4f30ac6b-b528-4856-adbe-8856f320b11c)
+
+<b>RACCOLTE</b>
+
+I documenti si trovano nelle raccolte, che sono semplicemente contenitori per i documenti. Per Ad esempio, potresti avere una raccolta users che contiene i vari utenti, rappresentati da un documento:
+![image](https://github.com/user-attachments/assets/743322cc-a3ee-409a-94f7-de7f0a3d12d0)
+
+<h3>CONFIGURAZIONE DATABASE:</h3>
+
+1. Dopo aver fatto l'accesso tramite Google al sito `https://console.firebase.google.com/u/0/`, creare un nuovo progetto seguendo le istruzioni.
+   <b>ATTENZIONE:</b> Ai fini del progetto, si raccomanda di non impostare <b>nessuna regola</b> per evitare errori di permessi durante la scrittura sul database
+2. Accedere al progetto appena creato e creare una nuova raccolta `'users'`
+
+Per salvare le credenziali di accesso da inserire all'interno del file `config.py` seguire i seguenti passaggi: 
+
+1. Accedere alla sezione `Impostazioni progetto`:
+![ImpostazioniProgetto](https://github.com/user-attachments/assets/40362d5c-37f3-4ed5-9048-b24c3503ea9e)
+
+2. Andare nella sezione `Account di servizio` e quindi `SDK Firebase Admin`
+3. Selezionare `Python` come `Snippet di configurazione SDK Admin`
+4. Cliccare su `Genera nuova chiave privata`
+
+Verrà scaricato un file .json contenete le informazioni necessarie al collegamento del database. 
+
+5. Inserire il file appena scaricato all'interno della cartella del progetto 
+6. Modificare il valore `FIREBASE_CREDENTIALS` all'interno del file `config.py` inserendo il nome completo del file scaricato precedentemente
 
 # 6. Flask
 
