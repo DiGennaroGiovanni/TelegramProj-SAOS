@@ -42,6 +42,7 @@ Al termine della creazione, verrà fornito un <b>TOKEN</b> univoco, come ad esem
 <h3>CONFIGURAZIONE COMANDO UTILE AL PROGETTO:</h3>
 Il servizio realizzato in questo progetto utilizza il chatBot per modificare alcune informazioni dell'utente. A tal proposito è necessario creare un comando personalizzato.
 
+
 1. Inviare il comando `/setcommands` all'interno della chat con @BotFather
 2. Creare esattamente il comando `indirizzofatturazione - Inserisci o modifica il tuo indirizzo di fatturazione`
 
@@ -99,7 +100,9 @@ Per monitorare le richieste inviate al server è possibile accedere al link : `h
 
 Firestore è un database NoSQL orientato ai documenti. A differenza di un database SQL, non ci sono tabelle o righe. I dati vengono archiviati in documenti, che sono organizzati in raccolte.
 Ogni documento contiene un insieme di coppie chiave-valore. Firestore è ottimizzato per l'archiviazione di grandi raccolte di piccoli documenti.
+
 Tutti i documenti devono essere archiviati in raccolte.
+
 Le raccolte e i documenti vengono creati implicitamente in Firestore, è sufficiente assegnare i dati a un documento all'interno di una raccolta. Se la raccolta o il documento non esistono, Firestore li crea.
 
 <b>DOCUMENTI</b>
@@ -118,9 +121,8 @@ I documenti si trovano nelle raccolte, che sono semplicemente contenitori per i 
 <h3>CONFIGURAZIONE DATABASE:</h3>
 
 1. Dopo aver fatto l'accesso tramite Google al sito `https://console.firebase.google.com/u/0/`, creare un nuovo progetto seguendo le istruzioni.
-2. 
    <b>ATTENZIONE:</b> Ai fini del progetto, si raccomanda di non impostare <b>nessuna regola</b> per evitare errori di permessi durante la scrittura sul database
-3. Accedere al progetto appena creato e creare una nuova raccolta `'users'`
+2. Accedere al progetto appena creato e creare una nuova raccolta `'users'`
 
 Per salvare le credenziali di accesso da inserire all'interno del file `config.py` seguire i seguenti passaggi: 
 
