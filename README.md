@@ -163,6 +163,8 @@ Per testare le funzionalità dell'applicazione, bisogna visitare il link ottenut
 Queste due funzionalità sono implementate attraverso il `Telegram Login Widget`. Quando si utilizza il login Telegram per la prima volta, il widget chiede il numero di telefono all'utente e invia un messaggio di conferma via Telegram per autorizzare il browser.
 Una volta fatto questo, viene visualizzato un meccanismo di <b>two-click login</b> sul sito.
 
+![consenso](https://github.com/user-attachments/assets/2355c217-d130-436b-9757-939fbdf8cd18)
+
 Quando si esegue l'accesso, verrà inviato il nome di Telegram, nome utente e la foto profilo al sito web. Il numero di telefono rimane invece nascosto. Il sito web può anche richiedere l'autorizzazione per inviare messaggi dal loro bot.
 
 Dopo ogni login, Telegram invierà un messaggio di riepilogo delle autorizzazioni concesse e dei dati che il sito web possiede. È possibile revocare l'autorizzazione toccando il pulsante appropriato sotto la sintesi di accesso.
